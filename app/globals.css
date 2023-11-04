@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none; /* For Webkit browsers like Chrome and Safari */
+}
+
+[data-aos] {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
