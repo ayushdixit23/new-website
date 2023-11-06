@@ -69,10 +69,13 @@ const First = () => {
                   <div className="flex flex-col md:gap-8 gap-6 justify-center pn:max-sm:px-3 sm:w-[75%] md:w-[53%]">
                     <div className="flex flex-col gap-4">
                       <div className="text-[40px] sm:max-md:text-3xl tracking-wide pn:max-sm:text-center leading-snug font-bold">
-                        <br className="hidden md:block" />{" "}
-                        <span className="text-red-600 underline">Branding</span>{" "}
+                        The best use of{" "}
+                        {/* <br className="hidden md:block" />{" "} */}
+                        <span className="text-red-600 underline">
+                          social media
+                        </span>{" "}
                         <br className="hidden md:block" />
-                        at its peak
+                        marketing
                       </div>
 
                       <div className="pn:max-sm:text-center">

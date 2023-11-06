@@ -28,18 +28,22 @@ const Footer = () => {
             </div>
             <div className="sm:hidden my-3">
               <div className="flex items-center flex-wrap gap-3">
-                <div className="bg-[#F0F5FF] p-3 rounded-lg">
+                {/* <div className="bg-[#F0F5FF] p-3 rounded-lg">
                   {" "}
                   <FaFacebookF className="text-xl text-[#1877F2]" />
                 </div>
                 <div className="bg-[#0E76A8] p-3 rounded-lg">
                   {" "}
                   <FaLinkedinIn className="text-xl text-[#fff]" />
-                </div>
-                <div className="bg-[#edeaeaf1] p-3 rounded-lg">
+                </div> */}
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/willow_wave_/?igshid=YTQwZjQ0NmI0OA%3D%3D"
+                  className="bg-[#edeaeaf1] p-3 rounded-lg"
+                >
                   {" "}
                   <FaInstagram className="text-xl text-[#ec6455]" />
-                </div>
+                </a>
               </div>
             </div>
             <div className="flex flex-col col-span-1 my-2 text-[#838E9E] sm:items-center">

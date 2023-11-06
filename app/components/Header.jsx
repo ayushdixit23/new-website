@@ -12,7 +12,6 @@ const Header = () => {
   return (
     <>
       <div
-        onClick={() => setMenu(false)}
         className={` fixed inset-0  w-full h-screen ${menu ? "z-10" : "-z-10"}`}
       ></div>
       <div className="px-[2%] py-5 bg-[#E7FAFE] pn:max-sm:py-3">
@@ -56,9 +55,13 @@ const Header = () => {
             <div>
               <BsTwitter />
             </div> */}
-            <div>
+            <a
+              target="_blank
+            "
+              href="https://www.instagram.com/willow_wave_/?igshid=YTQwZjQ0NmI0OA%3D%3D"
+            >
               <BsInstagram />
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -66,7 +69,7 @@ const Header = () => {
       {/* mobile */}
 
       <div
-        className={`absolute duration-500 sm:hidden left-0 w-full bg-white ${
+        className={`absolute duration-500 sm:hidden z-10 left-0 w-full bg-white ${
           menu ? "top-0 " : "-top-[500px]"
         }`}
       >
@@ -85,10 +88,13 @@ const Header = () => {
                   {" "}
                   <FaLinkedinIn className="text-xl text-[#fff]" />
                 </div> */}
-                <div className="bg-[#edeaeaf1] p-3 rounded-lg">
-                  {" "}
-                  <FaInstagram className="text-xl text-[#ec6455]" />
-                </div>
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/willow_wave_/?igshid=YTQwZjQ0NmI0OA%3D%3D"
+                  className="bg-[#edeaeaf1] p-3 rounded-lg"
+                >
+                  <FaInstagram className="text-xl  text-[#ec6455]" />
+                </a>
               </div>
             </div>
             <div className="w-full px-3 pb-7">
