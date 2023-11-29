@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-
-import hero from "../assets/hero.svg";
+import hero from "../assets/Frame.png";
 import { BsFillPlayCircleFill, BsStopwatchFill } from "react-icons/bs";
 import Header from "./Header";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const First = () => {
+  const router = useRouter();
   return (
     <>
       <div>
@@ -63,45 +65,54 @@ const First = () => {
             <Header />
 
             {/* body */}
-            <div className="grid grid-cols-1 pn:max-lg:max-w-[1280px] w-full sm:h-[90%]">
-              <div className="flex flex-col justify-around xxl:justify-center w-full sm:flex-row min-h-[400px] ">
-                <div className=" my-3 flex flex-col gap-6 justify-center items-center">
-                  <div className="flex flex-col md:gap-8 gap-6 justify-center pn:max-sm:px-3 sm:w-[75%] md:w-[53%]">
-                    <div className="flex flex-col gap-4">
-                      <div className="text-[40px] sm:max-md:text-3xl tracking-wide pn:max-sm:text-center leading-snug font-bold">
-                        The best use of{" "}
-                        {/* <br className="hidden md:block" />{" "} */}
-                        <span className="text-red-600 underline">
-                          social media
-                        </span>{" "}
-                        <br className="hidden md:block" />
-                        marketing
+            <div className="grid grid-cols-1 w-full">
+              <div className="flex flex-col justify-around xxl:justify-evenly xxl:min-h-[520px] w-full sm:flex-row">
+                <div className="my-3 pn:max-sm:order-2 flex xxl:w-[35%] flex-col gap-6 justify-center">
+                  <div className="flex p-4 xxl:items-center flex-col md:gap-8 gap-6 justify-center pn:max-sm:px-3">
+                    <div className="flex flex-col p-2 sm:p-4 gap-2 sm:gap-4">
+                      <div className="xxl:text-[40px] text-[35px] pn:max-sm:hidden sm:max-md:text-[26px] tracking-wide leading-snug font-bold">
+                        <div>Elevate Your Social</div>
+                        <div>Media Presence with</div>
+                        <div>Willow Wave</div>
+                      </div>
+                      <div className="text-2xl sm:hidden tracking-wide pn:max-sm:text-center leading-snug font-bold">
+                        <div>
+                          Elevate Your Social{" "}
+                          <br className="vs:max-sm:block hidden" /> Media
+                          Presence with Willow Wave
+                        </div>
                       </div>
 
-                      <div className="pn:max-sm:text-center">
-                        Strategically deploy social media for genuine audience
-                        bonds
+                      <div className="pn:max-sm:text-center w-full text-sm">
+                        WIllow Wave is a leading social media agency that
+                        <br className="pn:max-new:hidden" />
+                        provides tailored solutions for businesses and
+                        <br className="pn:max-new:hidden" />
+                        individuals looking to enhance their social media
+                        <br className="pn:max-new:hidden" />
+                        presence. Our expert team offers a wide range of
+                        <br className="pn:max-new:hidden" />
+                        services, from strategy development to content creation
+                        <br className="pn:max-new:hidden" />
+                        and advertising management, to help you grow your
+                        <br className="pn:max-new:hidden" /> online audience.
                       </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="flex gap-4">
-                      <button className="flex justify-center items-center py-3 px-3 gap-1 bg-[#edeaeaf1] text-black rounded-full">
-                        <BsStopwatchFill />
-                        <div className="text-xs">Start 14 days Free Trial</div>
-                      </button>
-                      <button className="flex justify-center items-center py-3 px-3 gap-1  bg-black text-white rounded-xl">
-                        <BsFillPlayCircleFill />
-                        <div className="text-xs">Watch a Demo</div>
-                      </button>
+                      <div
+                        onClick={() => router.push("/user/contact")}
+                        className="flex flex-col items-center pt-2 sm:items-start gap-3"
+                      >
+                        <div className="bg-black flex items-center justify-center text-white p-2 px-6 rounded-xl">
+                          Contact Us
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-center items-center pn:max-sm:p-4">
+                <div className="flex pn:max-sm:order-1 md:max-lg:w-[450px] justify-center lg:max-w-[500px] max-w-[650px] xxl:w-[35%] items-center pn:max-sm:p-4">
                   <Image
                     src={hero}
                     alt="image"
-                    className="sm:max-w-[400px] lg:max-w-[500px]"
+                    className="sm:max-w-[350px] lg:max-w-[500px]"
                   />
                 </div>
               </div>

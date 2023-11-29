@@ -10,6 +10,7 @@ module.exports = {
       'pn': '130px',
       'vs': '360px',
       'sm': '720px',
+      'new': '770px',
       'md': '1024px',
       'lg': '1280px',
       'xxl': '1800px',

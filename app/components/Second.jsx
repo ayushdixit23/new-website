@@ -32,25 +32,27 @@ const Second = () => {
                   marketing
                 </div>
                 <div className="flex justify-center my-3 items-center">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                     <div
                       data-aos-delay="50"
                       data-aos-duration="500"
                       data-aos-once="true"
                       data-aos-easing="ease-in-out"
                       data-aos="fade-right"
-                      className="bg-white p-5 shadow-md rounded-xl sm:max-w-[400px] flex flex-col gap-4"
+                      className="bg-white p-5 shadow-md rounded-xl md:max-w-[400px] flex flex-col gap-4"
                     >
                       <div>
                         <Image src={icon} alt="icons" />
                       </div>
                       <div className="flex justify-center flex-col gap-2">
                         <div className="text-xl sm:text-lg lg:text-xl font-semibold">
-                          Creative Content Orchestration
+                          Advertising Management
                         </div>
                         <div className="md:w-[85%] leading-snug pn:max-sm:max-w-[75%] w-full font-medium text-[#333]">
-                          Content orchestration: Shaping narratives for business
-                          excellence.
+                          Our advertising management service delivers visually
+                          appealing, high-converting ads tailored to your target
+                          audience, driving engagement and delivering measurable
+                          results.
                         </div>
                       </div>
                       <div className="flex items-center gap-1 font-medium text-[#0B63E5]">
@@ -66,18 +68,19 @@ const Second = () => {
                       data-aos-once="true"
                       data-aos-easing="ease-in-out"
                       data-aos="fade-left"
-                      className="bg-white p-5 shadow-md rounded-xl sm:max-w-[400px] flex flex-col gap-4"
+                      className="bg-white p-5 shadow-md rounded-xl md:max-w-[400px] flex flex-col gap-4"
                     >
                       <div>
                         <Image src={icon1} alt="icons" />
                       </div>
                       <div className="flex justify-center flex-col gap-2">
                         <div className="text-xl sm:text-lg lg:text-xl font-semibold">
-                          Community Cultivation
+                          Content Creation
                         </div>
                         <div className="md:w-[85%] leading-snug pn:max-sm:max-w-[75%]  w-full font-medium text-[#333]">
-                          We prioritize community cultivation as an integral
-                          aspect of our growth model.
+                          Our content creation service produces high-quality,
+                          visually appealing content that delivers value to your
+                          audience and drives social media engagement.
                         </div>
                       </div>
                       <div className="flex items-center gap-1 font-medium text-[#0B63E5]">
@@ -93,18 +96,19 @@ const Second = () => {
                       data-aos-once="true"
                       data-aos-easing="ease-in-out"
                       data-aos="fade-right"
-                      className="bg-white p-5 shadow-md rounded-xl sm:max-w-[400px] flex flex-col gap-4"
+                      className="bg-white p-5 shadow-md rounded-xl md:max-w-[400px] flex flex-col gap-4"
                     >
                       <div>
                         <Image src={icon2} alt="icons" />
                       </div>
                       <div className="flex justify-center flex-col gap-2">
                         <div className="text-xl sm:text-lg lg:text-xl font-semibold">
-                          Collaborative Alchemy
+                          Social Media Strategy
                         </div>
                         <div className="md:w-[85%] leading-snug pn:max-sm:max-w-[75%]  w-full font-medium text-[#333]">
-                          Elevate Your Business with the Power of Collaborative
-                          Alchemy.
+                          Our social media strategy service helps you establish
+                          a strong online presence and engage with your target
+                          audience through a customized, data-driven approach.
                         </div>
                       </div>
                       <div className="flex items-center gap-1 font-medium text-[#0B63E5]">

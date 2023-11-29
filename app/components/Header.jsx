@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 import Image from "next/image";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { RiMenu3Line } from "react-icons/ri";
@@ -14,13 +14,18 @@ const Header = () => {
       <div
         className={` fixed inset-0  w-full h-screen ${menu ? "z-10" : "-z-10"}`}
       ></div>
-      <div className="px-[2%] py-5 bg-[#E7FAFE] pn:max-sm:py-3">
-        <div className="flex justify-between lg:justify-around p-2 items-center">
-          <div className="flex justify-center items-center">
-            <div>
-              <Image src={logo} alt="logo" />
+      <div className="px-[2%] bg-[#E7FAFE] pn:max-sm:py-3">
+        <div className="flex justify-between lg:justify-around items-center">
+          <div className="flex flex-col p-2 justify-center items-center">
+            <div className="pt-2">
+              <Image src={logo} alt="logo" className="w-[38px] h-[20px]" />
             </div>
-            <div className="text-lg font-bold">Willow Wave</div>
+            <div className="gap-1 pn:max-sm:hidden flex flex-col py-1">
+              <div className="text-sm leading-snug tracking-wide font-bold">
+                Willow
+              </div>
+              <div className="text-xs -mt-2 text-center font-bold">wave</div>
+            </div>
           </div>
 
           <div className="sm:hidden z-50">

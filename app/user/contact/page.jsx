@@ -17,8 +17,6 @@ const page = () => {
     setId(id);
   }, [id]);
 
-  console.log(id);
-
   const handleUser = async () => {
     try {
       const user = {
@@ -76,12 +74,10 @@ const page = () => {
                 <div className="flex w-full p-2 items-center rounded-lg border gap-1">
                   <div className="w-full">
                     <textarea
-                      className="w-full outline-none p-2 max-h-[150px]"
+                      className="w-full outline-none p-2 min-h-[70px] max-h-[150px]"
                       value={msg}
                       onChange={(e) => setMsg(e.target.value)}
                       placeholder="Your Message"
-                      name=""
-                      id=""
                       cols="30"
                       rows="5"
                     ></textarea>
