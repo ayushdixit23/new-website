@@ -8,6 +8,7 @@ import { BiLogoFacebook } from "react-icons/bi";
 import { GrStatusWarning } from "react-icons/gr";
 import { BsChevronDown, BsInstagram } from "react-icons/bs";
 import { FaRegComments, FaTelegramPlane, FaYoutube } from "react-icons/fa";
+import Cookies from "js-cookie";
 // import { FaPeopleGroup } from "react-icons/fa6";
 // import { PiClockCounterClockwise } from "react-icons/pi";
 const page = () => {
@@ -94,7 +95,7 @@ const page = () => {
 	console.log(discount)
 
 	useEffect(() => {
-		const id = sessionStorage.getItem("id")
+		const id = JSON.parse(Cookies.get("id"))
 		setId(id)
 	}, [id])
 	return (

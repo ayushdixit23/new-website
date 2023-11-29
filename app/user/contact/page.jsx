@@ -1,6 +1,7 @@
 "use client";
 import { API } from "@/app/Essential";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -13,7 +14,7 @@ const page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const id = sessionStorage.getItem("id");
+    const id = JSON.parse(Cookies.get("id"));
     setId(id);
   }, [id]);
 

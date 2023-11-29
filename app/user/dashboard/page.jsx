@@ -21,7 +21,7 @@ const page = () => {
 
   console.log(id);
   useEffect(() => {
-    const id = sessionStorage.getItem("id");
+    const id = JSON.parse(Cookies.get("id"));
     setId(id);
   }, [id]);
 
