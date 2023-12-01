@@ -64,7 +64,7 @@ const page = () => {
           if (decodedToken.exp - currentTime < 300) {
             const refreshedTokens = await refreshAccessToken();
             setTokens(refreshedTokens);
-            Cookies.set("tokens", refreshedTokens);
+            Cookies.set("tokens", JSON.stringify(refreshedTokens));
           }
           config.headers.Authorization = `Bearer ${tokens.access_token}`;
         }

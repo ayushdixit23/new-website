@@ -21,8 +21,11 @@ const page = () => {
 
   console.log(id);
   useEffect(() => {
-    const id = JSON.parse(Cookies.get("id"));
-    setId(id);
+    const getid = Cookies.get("id");
+    if (getid) {
+      const id = JSON.parse(getid);
+      setId(id);
+    }
   }, [id]);
 
   console.log(id);

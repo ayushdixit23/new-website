@@ -16,7 +16,6 @@ const page = () => {
 			const user = {
 				email: email,
 				password: password,
-				cpassword: cpassword
 			};
 			if (cpassword === password) {
 				const res = await axios.post(`${API}/users/signup`, user);

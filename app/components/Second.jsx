@@ -48,7 +48,7 @@ const Second = () => {
                         <div className="text-xl sm:text-lg lg:text-xl font-semibold">
                           Advertising Management
                         </div>
-                        <div className="md:w-[85%] leading-snug pn:max-sm:max-w-[75%] w-full font-medium text-[#333]">
+                        <div className="md:w-[85%] leading-snug w-full font-medium text-[#333]">
                           Our advertising management service delivers visually
                           appealing, high-converting ads tailored to your target
                           audience, driving engagement and delivering measurable
@@ -77,7 +77,7 @@ const Second = () => {
                         <div className="text-xl sm:text-lg lg:text-xl font-semibold">
                           Content Creation
                         </div>
-                        <div className="md:w-[85%] leading-snug pn:max-sm:max-w-[75%]  w-full font-medium text-[#333]">
+                        <div className="md:w-[85%] leading-snug w-full font-medium text-[#333]">
                           Our content creation service produces high-quality,
                           visually appealing content that delivers value to your
                           audience and drives social media engagement.
@@ -105,7 +105,7 @@ const Second = () => {
                         <div className="text-xl sm:text-lg lg:text-xl font-semibold">
                           Social Media Strategy
                         </div>
-                        <div className="md:w-[85%] leading-snug pn:max-sm:max-w-[75%]  w-full font-medium text-[#333]">
+                        <div className="md:w-[85%] leading-snug w-full font-medium text-[#333]">
                           Our social media strategy service helps you establish
                           a strong online presence and engage with your target
                           audience through a customized, data-driven approach.
