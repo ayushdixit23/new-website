@@ -2,9 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import hero from "../assets/Frame.png";
-import { BsFillPlayCircleFill, BsStopwatchFill } from "react-icons/bs";
 import Header from "./Header";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const First = () => {
@@ -18,50 +16,6 @@ const First = () => {
         >
           <div className="grid grid-cols-1 select-none h-[100%] w-full bg-[#E7FAFE]">
             {/* header */}
-            {/* <div className="px-[2%] pn:max-sm:py-3 sm:h-[10%]">
-              <div className="flex justify-between lg:justify-around p-2 items-center">
-                <div className="flex justify-center items-center">
-                  <div>
-                    <Image src={logo} alt="logo" />
-                  </div>
-                  <div className="text-lg font-bold">Willow Wave</div>
-                </div>
-
-                <div className="sm:hidden">
-                  {menu ? (
-                    <RxCross2
-                      onClick={() => setMenu(!menu)}
-                      className="text-2xl font-bold"
-                    />
-                  ) : (
-                    <RiMenu3Line
-                      onClick={() => setMenu(!menu)}
-                      className="text-2xl font-bold"
-                    />
-                  )}
-                </div>
-
-                <div className="pn:max-sm:hidden">
-                  <ul className="flex justify-center gap-7 text-sm items-center">
-                    <li>Blog</li>
-                    <li>Contact</li>
-                    <li>About us</li>
-                  </ul>
-                </div>
-                <div className="flex justify-center pn:max-sm:hidden text-lg gap-6 items-center">
-                
-                  <div>
-                    <FaFacebookF />
-                  </div>
-                  <div>
-                    <BsTwitter />
-                  </div>
-                  <div>
-                    <BsInstagram />
-                  </div>
-                </div>
-              </div>
-            </div> */}
             <Header />
 
             {/* body */}
