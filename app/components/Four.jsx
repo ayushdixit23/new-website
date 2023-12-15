@@ -28,7 +28,7 @@ const Four = () => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <div className="font-semibold text-lg">2+</div>
+                    <div className="font-semibold text-lg">17+</div>
                     <div className="sm:text-sm text-xs text-[#42526B]">
                       years of experience
                     </div>
@@ -43,7 +43,7 @@ const Four = () => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <div className="font-semibold">30k+</div>
+                    <div className="font-semibold">80,000 followers </div>
                     <div className="sm:text-sm text-xs text-[#42526B]">
                       Social Followers
                     </div>
@@ -58,7 +58,7 @@ const Four = () => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <div className="font-semibold">500+</div>
+                    <div className="font-semibold">183+</div>
                     <div className="sm:text-sm text-xs text-[#42526B]">
                       Happy Clients
                     </div>
@@ -73,7 +73,7 @@ const Four = () => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <div className="font-semibold">317+</div>
+                    <div className="font-semibold">100+</div>
                     <div className="sm:text-sm text-xs text-[#42526B]">
                       COMPLETED PROJECT
                     </div>

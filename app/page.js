@@ -28,11 +28,19 @@ export default function Home() {
             data-aos-easing="ease-in-out" data-aos="fade-up">
             <First />
           </div>
-          <div data-aos-delay="50"
+          {/* <div data-aos-delay="50"
             data-aos-duration="500"
             data-aos-once="true"
             data-aos-easing="ease-in-out" data-aos="fade-right">
             <Second />
+          </div> */}
+          <div>
+            {/* data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-once="true"
+            data-aos-easing="ease-in-out" data-aos="fade-left"> */}
+
+            <Five />
           </div>
           <div data-aos-delay="50"
             data-aos-duration="500"
@@ -46,26 +54,19 @@ export default function Home() {
             data-aos-easing="ease-in-out" data-aos="fade-right">
             <Four />
           </div>
-          <div>
-            {/* data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-once="true"
-            data-aos-easing="ease-in-out" data-aos="fade-left"> */}
 
-            <Five />
-          </div>
           <div data-aos-delay="50"
             data-aos-duration="500"
             data-aos-once="true"
             data-aos-easing="ease-in-out" data-aos="fade-right">
             <Six />
           </div>
-          <div data-aos-delay="50"
+          {/* <div data-aos-delay="50"
             data-aos-duration="500"
             data-aos-once="true"
             data-aos-easing="ease-in-out" data-aos="fade-left">
             <Seven />
-          </div>
+          </div> */}
           <div data-aos-delay="50"
             data-aos-duration="500"
             data-aos-once="true"

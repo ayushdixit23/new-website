@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 
 const Seven = () => {
-  const [id, setId] = useState("");
-  useEffect(() => {
-    const id = sessionStorage.getItem("id");
-    setId(id);
-  }, []);
+  // const [id, setId] = useState("");
+  // useEffect(() => {
+  //   const id = sessionStorage.getItem("id");
+  //   setId(id);
+  // }, []);
+  
   return (
     <>
       <div>

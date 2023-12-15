@@ -3,13 +3,13 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AiTwotoneLock } from "react-icons/ai";
-
 import { useRouter } from "next/navigation";
 import { API } from "@/app/Essential";
 import Cookies from "js-cookie";
+import { decryptaes, encryptaes } from "@/app/components/safety";
 const page = () => {
-  const [email, setEmail] = useState("a@d.com");
-  const [password, setPassword] = useState("12");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
 
   const [tokens, setTokens] = useState({
@@ -23,7 +23,6 @@ const page = () => {
         email: email,
         password: password,
       };
-
       const res = await axios.post(`${API}/users/login`, user);
       console.log(res.data);
       if (res.data?.success) {
@@ -31,75 +30,28 @@ const page = () => {
           access_token: res.data.access_token,
           refresh_token: res.data.refresh_token,
         };
-        Cookies.set("tokens", JSON.stringify(tokensData));
-        Cookies.set("id", JSON.stringify(res.data.user._id));
+        Cookies.set("estkenA", encryptaes(tokensData.access_token));
+        Cookies.set("estkenR", encryptaes(tokensData.refresh_token));
+        Cookies.set("ryiligid", encryptaes(res.data.userid));
         setTokens(tokensData);
+        router.push(localStorage.getItem("path"));
+        localStorage.removeItem("path");
       }
     } catch (e) {
       console.log(e, "E");
     }
   };
-
   useEffect(() => {
-    const tokensFromCookie = Cookies.get("tokens");
-    if (tokensFromCookie) {
+    const access_token = decryptaes(Cookies.get("estkenA"));
+    const refresh_token = decryptaes(Cookies.get("estkenR"));
+    if (access_token && refresh_token) {
       try {
-        const storedTokens = JSON.parse(tokensFromCookie);
-        setTokens(storedTokens);
-        console.log(tokensFromCookie);
+        setTokens({ access_token, refresh_token });
       } catch (error) {
         console.error("Error parsing tokens from cookie:", error);
       }
     }
   }, []);
-
-  const axiosInstance = axios.create();
-
-  useEffect(() => {
-    axiosInstance.interceptors.request.use(
-      async (config) => {
-        if (tokens.access_token) {
-          const decodedToken = parseJwt(tokens.access_token);
-          const currentTime = Math.floor(Date.now() / 1000);
-          if (decodedToken.exp - currentTime < 300) {
-            const refreshedTokens = await refreshAccessToken();
-            setTokens(refreshedTokens);
-            Cookies.set("tokens", JSON.stringify(refreshedTokens));
-          }
-          config.headers.Authorization = `Bearer ${tokens.access_token}`;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-  }, [tokens]);
-
-  const parseJwt = (token) => {
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    return JSON.parse(atob(base64));
-  };
-
-  const refreshAccessToken = async () => {
-    try {
-      const res = await axios.post(`${API}/refresh`, {
-        refresh_token: tokens.refresh_token,
-      });
-      const { access_token, success } = res.data;
-
-      if (success) {
-        return { access_token, refresh_token: tokens.refresh_token };
-      } else {
-        console.log("Failed to refresh token");
-        return Promise.reject("Failed to refresh token");
-      }
-    } catch (err) {
-      console.log(err);
-      return Promise.reject("Failed to refresh token");
-    }
-  };
 
   return (
     <>
@@ -138,7 +90,7 @@ const page = () => {
                     />
                   </div>
                 </div>
-                <div className="flex justify-between items-center">
+                {/* <div className="flex justify-between items-center">
                   <div className="flex items-center gap-1">
                     <div>
                       <input type="checkbox" />
@@ -146,7 +98,7 @@ const page = () => {
                     <div className="text-sm">Save Password</div>
                   </div>
                   <div className="underline text-sm">Forgot password</div>
-                </div>
+                </div> */}
                 <div className="w-full  rounded-lg">
                   <button
                     onClick={handleUser}

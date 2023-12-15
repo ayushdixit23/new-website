@@ -4,12 +4,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BiMenu } from "react-icons/bi";
 import { FaWallet } from "react-icons/fa";
-
+import Cookies from "js-cookie";
+import { decryptaes } from "@/app/components/safety";
+import Pagination from "@/app/components/Pagination";
+import Fetch from "@/app/components/Fetch";
 const page = () => {
   const [order, setOrder] = useState([]);
-  const [id, setId] = useState("");
   const [balance, setBalance] = useState("");
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(10);
+  const lastindex = currentPage * postPerPage;
+  const firstIndex = lastindex - postPerPage;
+  const postperData = order.slice(firstIndex, lastindex);
   const fetchData = async () => {
     try {
       const res = await axios.get(`${API}/dashboard/${id}`);
@@ -18,17 +24,16 @@ const page = () => {
       console.log(err);
     }
   };
-
-  console.log(id);
+  
+  const [id, setId] = useState("");
   useEffect(() => {
-    const getid = Cookies.get("id");
-    if (getid) {
-      const id = JSON.parse(getid);
+    const id = decryptaes(Cookies.get("ryiligid"));
+    const refresh_token = decryptaes(Cookies.get("estkenR"));
+    const access_token = decryptaes(Cookies.get("estkenA"));
+    if (id && (refresh_token || access_token)) {
       setId(id);
     }
-  }, [id]);
-
-  console.log(id);
+  }, []);
 
   useEffect(() => {
     let a = 0;
@@ -81,64 +86,23 @@ const page = () => {
                     <div className="font-bold text-xl">{order?.length}</div>
                   </div>
                 </div>
-                <div className="my-6 overflow-x-scroll max-w-[900px]">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-gray-50">
-                        <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider col-span-3">
-                          Order
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider col-span-3">
-                          Type
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider">
-                          Quantity
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider">
-                          Price
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider">
-                          Status
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {order.map((d, i) => (
-                        <tr key={i} className="">
-                          <td className="px-6 py-4 text-sm leading-5 font-medium text-gray-900 col-span-3">
-                            {d?.SocialMedia}
-                          </td>
-                          <td className="px-6 py-4 text-sm leading-5">
-                            {d?.category}
-                          </td>
-                          <td className="px-6 py-4 text-sm leading-5">
-                            {d?.Count}
-                          </td>
-                          <td className="px-6 py-4 text-sm leading-5">
-                            {d?.price}
-                          </td>
-                          <td className="px-6 py-4 text-sm leading-5">
-                            {d?.status}
-                          </td>
-                        </tr>
-                      ))}
+                <Fetch
+                  // postPerPage={postPerPage}
+                  // setCurrentPage={setCurrentPage}
+                  order={postperData}
+                />
 
-                      {/* <tr className="">
-                        <td className="px-6 py-4 text-sm leading-5 font-medium text-gray-900 col-span-3">
-                          Data 5
-                        </td>
-                        <td className="px-6 py-4 text-sm leading-5">Data 6</td>
-                        <td className="px-6 py-4 text-sm leading-5">Data 7</td>
-                        <td className="px-6 py-4 text-sm leading-5">Data 8</td>
-                      </tr> */}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="flex justify-center my-4 items-center">
+                {/* <div className="flex justify-center my-4 items-center">
                   <div className="bg-[#fafafa] p-3 px-6 rounded-lg">
                     Show More
                   </div>
-                </div>
+                </div> */}
+                <Pagination
+                  postPerPage={postPerPage}
+                  setCurrentPage={setCurrentPage}
+                  currentPage={currentPage}
+                  length={order.length}
+                />
               </div>
             </div>
           </div>

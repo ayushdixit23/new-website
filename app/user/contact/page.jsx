@@ -1,25 +1,25 @@
 "use client";
 import { API } from "@/app/Essential";
-import axios from "axios";
 import Cookies from "js-cookie";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { decryptaes } from "@/app/components/safety";
 import React, { useEffect, useState } from "react";
-import { AiTwotoneLock } from "react-icons/ai";
+import axiosInstance from "@/app/components/axiosCode";
 const page = () => {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
-  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const router = useRouter();
+  const [id, setId] = useState("");
 
   useEffect(() => {
-    const getid = Cookies.get("id");
-    if (getid) {
-      const id = JSON.parse(getid);
+    const id = decryptaes(Cookies.get("ryiligid"));
+    const refresh_token = decryptaes(Cookies.get("estkenR"));
+    const access_token = decryptaes(Cookies.get("estkenA"));
+    if (id && (refresh_token || access_token)) {
       setId(id);
     }
-  }, [id]);
+  }, []);
 
   const handleUser = async () => {
     try {
@@ -29,7 +29,7 @@ const page = () => {
         message: msg,
       };
 
-      const res = await axios.post(`${API}/contact/${id}`, user);
+      const res = await axiosInstance.post(`${API}/contact/${id}`, user);
       if (res.data.success) {
         setEmail("");
         setName("");

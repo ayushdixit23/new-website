@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { API } from "@/app/Essential";
 import axios from "axios";
 import Link from "next/link";
@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AiTwotoneLock } from "react-icons/ai";
 const page = () => {
-	const [email, setEmail] = useState("")
-	const [password, setPassword] = useState("")
-	const [cpassword, setCpassword] = useState("")
-	const router = useRouter()
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [cpassword, setCpassword] = useState("");
+	const router = useRouter();
 
 	const handleUser = async () => {
 		try {
@@ -21,18 +21,16 @@ const page = () => {
 				const res = await axios.post(`${API}/users/signup`, user);
 
 				if (res.data.success) {
-					router.push("/user/login")
+					router.push("/user/login");
 				}
 			}
 		} catch (e) {
-			console.log(e, "e")
+			console.log(e, "e");
 		}
-
 	};
 
-	console.log(email, password, cpassword)
+	console.log(email, password, cpassword);
 	return (
-
 		<>
 			<div className="min-h-[40vh] select-none sm:min-h-[50vh] md:min-h-[70vh] my-3 pn:max-sm:p-3 flex justify-center items-center">
 				<div className="flex items-center shadow-lg rounded-lg p-5 w-full md:w-[35%] sm:max-md:max-w-[600px]">
@@ -83,7 +81,7 @@ const page = () => {
 										/>
 									</div>
 								</div>
-								<div className="flex justify-between items-center">
+								{/* <div className="flex justify-between items-center">
 									<div className="flex items-center gap-1">
 										<div>
 											<input type="checkbox" />
@@ -91,9 +89,12 @@ const page = () => {
 										<div className="text-sm">Save Password</div>
 									</div>
 									<div className="underline text-sm">Forgot password</div>
-								</div>
+								</div> */}
 								<div className="w-full  rounded-lg">
-									<button onClick={handleUser} className="p-3 w-full bg-[#1D9BF0]  rounded-lg text-white">
+									<button
+										onClick={handleUser}
+										className="p-3 w-full bg-[#1D9BF0]  rounded-lg text-white"
+									>
 										Sign Up
 									</button>
 								</div>
@@ -101,17 +102,15 @@ const page = () => {
 									Don’t have in account?{" "}
 									<span className="font-semibold cursor-pointer underline">
 										<Link href="/user/login">Log In</Link>
-
 									</span>
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</>
-	)
-}
+	);
+};
 
-export default page
+export default page;

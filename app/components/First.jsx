@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import hero from "../assets/Frame.png";
+import hero from "../assets/mainphoto.png";
 import Header from "./Header";
 import { useRouter } from "next/navigation";
 
@@ -23,51 +23,36 @@ const First = () => {
               <div className="flex flex-col justify-around xxl:justify-evenly xxl:min-h-[520px] w-full sm:flex-row">
                 <div className="my-3 pn:max-sm:order-2 flex xxl:w-[35%] flex-col gap-6 justify-center">
                   <div className="flex p-4 xxl:items-center flex-col md:gap-8 gap-6 justify-center pn:max-sm:px-3">
-                    <div className="flex flex-col p-2 sm:p-4 gap-2 sm:gap-4">
-                      <div className="xxl:text-[40px] text-[35px] pn:max-sm:hidden sm:max-md:text-[26px] tracking-wide leading-snug font-bold">
-                        <div>Elevate Your Social</div>
-                        <div>Media Presence with</div>
-                        <div>Willow Wave</div>
-                      </div>
-                      <div className="text-2xl sm:hidden tracking-wide pn:max-sm:text-center leading-snug font-bold">
-                        <div>
-                          Elevate Your Social{" "}
-                          <br className="vs:max-sm:block hidden" /> Media
-                          Presence with Willow Wave
-                        </div>
-                      </div>
-
-                      <div className="pn:max-sm:text-center w-full text-sm">
-                        WIllow Wave is a leading social media agency that
-                        <br className="pn:max-new:hidden" />
-                        provides tailored solutions for businesses and
-                        <br className="pn:max-new:hidden" />
-                        individuals looking to enhance their social media
-                        <br className="pn:max-new:hidden" />
-                        presence. Our expert team offers a wide range of
-                        <br className="pn:max-new:hidden" />
-                        services, from strategy development to content creation
-                        <br className="pn:max-new:hidden" />
-                        and advertising management, to help you grow your
-                        <br className="pn:max-new:hidden" /> online audience.
+                    <div className="flex sm:max-w-[500px] flex-col p-2 sm:p-4 gap-2 sm:gap-4">
+                      <div className="text-[#F461A6] pn:max-sm:text-center font-semibold text-lg">
+                        Social MEDIA GROWTH
                       </div>
                       <div
+                        className="xxl:text-[40px] md:text-[35px] text-xl th:text-[25px] sm:max-new:text-2xl pn:max-sm:text-center
+                        tracking-wide leading-snug font-bold"
+                      >
+                        The easiest way to Increase your Real Followers
+                      </div>
+
+                      <div className="flex justify-center items-center pn:max-sm:text-center">
+                        Unleash your potential and become an unstoppable force.
+                        Transform from zero to hero in your journey. Elevate
+                        your growth and emerge as a popular creator.
+                      </div>
+
+                      {/* <div
                         onClick={() => router.push("/user/contact")}
                         className="flex flex-col items-center pt-2 sm:items-start gap-3"
                       >
-                        <div className="bg-black flex items-center justify-center text-white p-2 px-6 rounded-xl">
-                          Contact Us
+                        <div className="bg-black flex items-center sm:max-new:text-sm justify-center text-white p-2 px-6 rounded-xl">
+                          Visit Our Managing Site
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
-                <div className="flex pn:max-sm:order-1 md:max-lg:w-[450px] justify-center lg:max-w-[500px] max-w-[650px] xxl:w-[35%] items-center pn:max-sm:p-4">
-                  <Image
-                    src={hero}
-                    alt="image"
-                    className="sm:max-w-[350px] lg:max-w-[500px]"
-                  />
+                <div className="flex justify-center items-center sm:max-h-[500px] sm:max-w-[700px]">
+                  <Image src={hero} alt="image" className="" />
                 </div>
               </div>
             </div>

@@ -11,10 +11,25 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import { API } from "../Essential";
-import Link from "next/link";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { encryptaes, decryptaes } from "./safety";
 
 const Third = () => {
   const [id, setId] = useState("");
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const id = decryptaes(Cookies.get("ryiligid"));
+    const refresh_token = decryptaes(Cookies.get("estkenR"));
+    const access_token = decryptaes(Cookies.get("estkenA"));
+    if (id && (refresh_token || access_token)) {
+      setId(id);
+    }
+  }, []);
+
   const [data, setData] = useState({
     insta: [],
     face: [],
@@ -36,17 +51,12 @@ const Third = () => {
         tele: [response.data[0].tele],
         you: [response.data[0].you],
       });
+      console.log(response.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    const id = sessionStorage.getItem("id");
-    setId(id);
-  }, [id]);
-
-  console.log(data);
   // console.log(data?.face[0]?.uniqueid[data.face[0]?.uniqueid.length - 1]);
 
   useEffect(() => {
@@ -57,17 +67,16 @@ const Third = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 my-6">
+      <div id="services" className="grid grid-cols-1 my-6">
         <div className="flex justify-center items-center">
           <div className="flex flex-col justify-center md:w-[50%] w-[97%] p-1 sm:w-[80%] leading-relaxed gap-2 sm:gap-4 text-center items-center">
             <div className="md:text-3xl sm:text-2xl text-xl font-extrabold">
-              Tailor Your Growth Strategy: Genuine Views, Followers, and Likes
-              for True Impact.
+              Want to grow yourself with Real followers likes and comments ?
             </div>
             <div>
-              Our array of options acknowledges the distinctiveness of each
-              social media marketing campaign.
+              Allow Us To introduce Our Strategy that helps you to become famous
             </div>
+            <div>We Use Our Community To grow Your Potential Social media</div>
           </div>
         </div>
         <div className="grid grid-cols-1">
@@ -86,7 +95,7 @@ const Third = () => {
                   <div className="bg-[#EFF4FC] p-2 rounded-lg">
                     <div className="flex justify-end items-center">
                       <div className=" bg-white text-red-600 p-1 px-3 rounded-lg">
-                        - {d?.offer}%
+                        {d?.offer}% {"off"}
                       </div>
                     </div>
 
@@ -108,9 +117,9 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Followers}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
@@ -119,20 +128,20 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Likes}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
                           <div className="bg-[#F8FAFC] p-1 rounded-md">
                             <AiOutlineEye className="text-xl" />
                           </div>
-                          <div>{d?.information[0].Shares}</div>
+                          <div>{d?.information[0].Views}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
@@ -141,37 +150,59 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Comments}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-center items-center">
                     {id ? (
-                      <Link
-                        href={{
-                          pathname: `/user/${d?.name}`,
-                          query: {
-                            name: d?.name,
-                            offer: d?.offer,
-                            details: d?.information[0].Followers,
-                            Likes: d?.information[0].Likes,
-                            Shares: d?.information[0].Shares,
-                            Comments: d?.information[0].Comments,
-                          },
+                      <div
+                        // href={{
+                        //   pathname: `/user/${d?.name}`,
+                        //   query: {
+                        //     name: d?.name,
+                        //     offer: d?.offer,
+                        //     details: d?.information[0].Followers,
+                        //     Likes: d?.information[0].Likes,
+                        //     Views: d?.information[0].Views,
+                        //     Comments: d?.information[0].Comments,
+                        //   },
+                        // }}
+                        onClick={() => {
+                          router.push(`/user/${d?.name}`);
+                          // dispatch(
+                          Cookies.set(
+                            "meordi",
+
+                            encryptaes(
+                              JSON.stringify({
+                                name: d?.name,
+                                offer: d?.offer,
+                                details: d?.information[0].Followers,
+                                Likes: d?.information[0].Likes,
+                                Views: d?.information[0].Views,
+                                Comments: d?.information[0].Comments,
+                              })
+                            )
+                          );
+                          // );
                         }}
                         className="bg-[#3C8AFF] rounded-lg text-white p-3"
                       >
                         Show more
-                      </Link>
+                      </div>
                     ) : (
-                      <Link
-                        href="/user/login"
+                      <div
+                        onClick={() => {
+                          router.push("/user/login"),
+                            localStorage.setItem("path", `/`);
+                        }}
                         className="bg-[#3C8AFF] rounded-lg text-white p-3"
                       >
                         Show more
-                      </Link>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -190,7 +221,7 @@ const Third = () => {
                   <div className="bg-[#EFF4FC] p-2 rounded-lg">
                     <div className="flex justify-end items-center">
                       <div className=" bg-white text-red-600 p-1 px-3 rounded-lg">
-                        - {d.offer}%
+                        {d?.offer}% {"off"}
                       </div>
                     </div>
                     <div className="flex flex-col gap-1 justify-center items-center">
@@ -211,9 +242,9 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Subscribers}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
@@ -222,20 +253,20 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Likes}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
                           <div className="bg-[#F8FAFC] p-1 rounded-md">
                             <AiOutlineEye className="text-xl" />
                           </div>
-                          <div>{d?.information[0].Shares}</div>
+                          <div>{d?.information[0].Views}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
@@ -244,37 +275,57 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Comments}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-center items-center">
                     {id ? (
-                      <Link
-                        href={{
-                          pathname: `/user/${d?.name}`,
-                          query: {
-                            name: d?.name,
-                            offer: d?.offer,
-                            details: d?.information[0].Subscribers,
-                            Likes: d?.information[0].Likes,
-                            Shares: d?.information[0].Shares,
-                            Comments: d?.information[0].Comments,
-                          },
+                      <div
+                        // href={{
+                        //   pathname: `/user/${d?.name}`,
+                        //   query: {
+                        //     name: d?.name,
+                        //     offer: d?.offer,
+                        //     details: d?.information[0].Subscribers,
+                        //     Likes: d?.information[0].Likes,
+                        //     Views: d?.information[0].Views,
+                        //     Comments: d?.information[0].Comments,
+                        //   },
+                        // }}
+                        onClick={() => {
+                          router.push(`/user/${d?.name}`);
+                          Cookies.set(
+                            "meordi",
+
+                            encryptaes(
+                              JSON.stringify({
+                                name: d?.name,
+                                offer: d?.offer,
+                                details: d?.information[0].Subscribers,
+                                Likes: d?.information[0].Likes,
+                                Views: d?.information[0].Views,
+                                Comments: d?.information[0].Comments,
+                              })
+                            )
+                          );
                         }}
                         className="bg-[#3C8AFF] rounded-lg text-white p-3"
                       >
                         Show more
-                      </Link>
+                      </div>
                     ) : (
-                      <Link
-                        href="/user/login"
+                      <div
+                        onClick={() => {
+                          router.push("/user/login"),
+                            localStorage.setItem("path", `/`);
+                        }}
                         className="bg-[#3C8AFF] rounded-lg text-white p-3"
                       >
                         Show more
-                      </Link>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -293,7 +344,7 @@ const Third = () => {
                   <div className="bg-[#EFF4FC] p-2 rounded-lg">
                     <div className="flex justify-end items-center">
                       <div className=" bg-white text-red-600 p-1 px-3 rounded-lg">
-                        - {d?.offer}%
+                        {d?.offer}% {"off"}
                       </div>
                     </div>
                     <div className="flex flex-col gap-1 justify-center items-center">
@@ -314,9 +365,9 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Followers}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
@@ -325,20 +376,20 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Likes}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
                           <div className="bg-[#F8FAFC] p-1 rounded-md">
                             <AiOutlineEye className="text-xl" />
                           </div>
-                          <div>{d?.information[0].Shares}</div>
+                          <div>{d?.information[0].Views}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
@@ -347,37 +398,58 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Comments}</div>
                         </div>
-                        <div>
+                        {/* <div>
                           <AiOutlineRight />
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-center items-center">
                     {id ? (
-                      <Link
-                        href={{
-                          pathname: `/user/${d?.name}`,
-                          query: {
-                            name: d?.name,
-                            offer: d?.offer,
-                            details: d?.information[0].Followers,
-                            Likes: d?.information[0].Likes,
-                            Shares: d?.information[0].Shares,
-                            Comments: d?.information[0].Comments,
-                          },
+                      <div
+                        // href={{
+                        //   pathname: `/user/${d?.name}`,
+                        //   query: {
+                        //     name: d?.name,
+                        //     offer: d?.offer,
+                        //     details: d?.information[0].Followers,
+                        //     Likes: d?.information[0].Likes,
+                        //     Views: d?.information[0].Views,
+                        //     Comments: d?.information[0].Comments,
+                        //   },
+                        // }}
+                        onClick={() => {
+                          router.push(`/user/${d?.name}`);
+                          Cookies.set(
+                            "meordi",
+
+                            encryptaes(
+                              JSON.stringify({
+                                name: d?.name,
+                                offer: d?.offer,
+                                details: d?.information[0].Followers,
+                                Likes: d?.information[0].Likes,
+                                Views: d?.information[0].Views,
+                                Comments: d?.information[0].Comments,
+                              })
+                            )
+                          );
+                          // );
                         }}
                         className="bg-[#3C8AFF] rounded-lg text-white p-3"
                       >
                         Show more
-                      </Link>
+                      </div>
                     ) : (
-                      <Link
-                        href="/user/login"
+                      <div
+                        onClick={() => {
+                          router.push("/user/login"),
+                            localStorage.setItem("path", `/`);
+                        }}
                         className="bg-[#3C8AFF] rounded-lg text-white p-3"
                       >
                         Show more
-                      </Link>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -408,40 +480,41 @@ const Third = () => {
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <div className="flex flex-col gap-3">
-                      <div className="flex justify-between items-center">
-                        <div className="flex justify-center items-center gap-2">
-                          <div className="bg-[#F8FAFC] p-1 rounded-md">
-                            <MdPersonAddAlt1 className="text-xl" />
+                  <div className="flex flex-col justify-between items-center w-full flex-grow">
+                    <div className="w-full">
+                      <div className="flex flex-col gap-3">
+                        <div className="flex justify-between items-center">
+                          <div className="flex justify-center items-center gap-2">
+                            <div className="bg-[#F8FAFC] p-1 rounded-md">
+                              <MdPersonAddAlt1 className="text-xl" />
+                            </div>
+                            <div>{d?.information[0]?.Members}</div>
                           </div>
-                          <div>{d?.information[0].Subscribers}</div>
+                          {/* <div>
+                            <AiOutlineRight />
+                          </div> */}
                         </div>
-                        <div>
-                          <AiOutlineRight />
-                        </div>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <div className="flex justify-center items-center gap-2">
-                          <div className="bg-[#F8FAFC] p-1 rounded-md">
-                            <AiOutlineHeart className="text-xl" />
+                        <div className="flex justify-between items-center">
+                          <div className="flex justify-center items-center gap-2">
+                            <div className="bg-[#F8FAFC] p-1 rounded-md">
+                              <AiOutlineHeart className="text-xl" />
+                            </div>
+                            <div>{d?.information[0].Reactions}</div>
                           </div>
-                          <div>{d?.information[0].Likes}</div>
+                          {/* <div>
+                            <AiOutlineRight />
+                          </div> */}
                         </div>
-                        <div>
-                          <AiOutlineRight />
-                        </div>
-                      </div>
-                      <div className="flex justify-between items-center">
+                        {/* <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
                           <div className="bg-[#F8FAFC] p-1 rounded-md">
                             <AiOutlineEye className="text-xl" />
                           </div>
-                          <div>{d?.information[0].Shares}</div>
+                          <div>{d?.information[0].Views}</div>
                         </div>
-                        <div>
-                          <AiOutlineRight />
-                        </div>
+                        // <div>
+                        //   <AiOutlineRight />
+                        // </div>
                       </div>
                       <div className="flex justify-between items-center">
                         <div className="flex justify-center items-center gap-2">
@@ -450,38 +523,59 @@ const Third = () => {
                           </div>
                           <div>{d?.information[0].Comments}</div>
                         </div>
-                        <div>
-                          <AiOutlineRight />
-                        </div>
+                        // <div>
+                        //   <AiOutlineRight />
+                        // </div>
+                      </div> */}
                       </div>
                     </div>
-                  </div>
-                  <div className="flex justify-center items-center">
-                    {id ? (
-                      <Link
-                        href={{
-                          pathname: `/user/${d?.name}`,
-                          query: {
-                            name: d?.name,
-                            offer: d?.offer,
-                            details: d?.information[0].Subscribers,
-                            Likes: d?.information[0].Likes,
-                            Shares: d?.information[0].Shares,
-                            Comments: d?.information[0].Comments,
-                          },
-                        }}
-                        className="bg-[#3C8AFF] rounded-lg text-white p-3"
-                      >
-                        Show more
-                      </Link>
-                    ) : (
-                      <Link
-                        href="/user/login"
-                        className="bg-[#3C8AFF] rounded-lg text-white p-3"
-                      >
-                        Show more
-                      </Link>
-                    )}
+                    <div className="flex justify-center items-center">
+                      {id ? (
+                        <div
+                          // href={{
+                          //   pathname: `/user/${d?.name}`,
+                          //   query: {
+                          //     name: d?.name,
+                          //     offer: d?.offer,
+                          //     details: d?.information[0].Subscribers,
+                          //     Likes: d?.information[0].Likes,
+                          //     Views: d?.information[0].Views,
+                          //     Comments: d?.information[0].Comments,
+                          //   },
+                          // }}
+                          onClick={() => {
+                            router.push(`/user/${d?.name}`);
+                            Cookies.set(
+                              "meordi",
+
+                              encryptaes(
+                                JSON.stringify({
+                                  name: d?.name,
+                                  offer: d?.offer,
+                                  details: d?.information[0]?.Members,
+                                  Reactions: d?.information[0].Reactions,
+                                  // Views: d?.information[0].Views,
+                                  // Comments: d?.information[0].Comments,
+                                })
+                              )
+                            );
+                          }}
+                          className="bg-[#3C8AFF] rounded-lg text-white p-3"
+                        >
+                          Show more
+                        </div>
+                      ) : (
+                        <div
+                          onClick={() => {
+                            router.push("/user/login"),
+                              localStorage.setItem("path", `/`);
+                          }}
+                          className="bg-[#3C8AFF] rounded-lg text-white p-3"
+                        >
+                          Show more
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}

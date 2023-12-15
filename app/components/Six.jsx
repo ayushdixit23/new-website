@@ -3,24 +3,29 @@ import React, { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import photo from "../assets/Invisible.svg";
 import Image from "next/image";
+import a1 from "../assets/ai1.png";
+import a2 from "../assets/ai2.png";
+import a3 from "../assets/ai3.png";
+import a4 from "../assets/ai4.png";
+import a5 from "../assets/ai5.png";
 import { BiSolidStar } from "react-icons/bi";
 const Six = () => {
   const [index, setIndex] = useState(0);
   const [data, setData] = useState([
     {
       id: 0,
-      msg: "Willow Wave's social media expertise transformed our online presence, driving growth. Their professionalism and results-oriented approach make them a trusted digital partner",
+      msg: "Willow Wave's social media mastery drives consistent online growth, firmly establishing them as trusted and reliable digital partners.",
       name: "Benjamin Mitchell",
-      subname: "Developer",
-      img: photo,
+      subname: "Social Media Manager",
+      img: a1,
       star: 4,
     },
     {
       id: 1,
       msg: "Kudos to Willow Wave for elevating our social media presence. Their brilliant strategies drive remarkable growth, making them a top-notch digital partner",
       name: "Daniel Walker",
-      subname: "Designer",
-      img: photo,
+      subname: "Content Creator",
+      img: a2,
       star: 4,
     },
     {
@@ -28,23 +33,23 @@ const Six = () => {
       msg: "Willow Wave's social media services are truly exceptional, consistently delivering impressive results. Their profound understanding of our brand is unmatched.",
       name: "Oliver Scott",
       subname: "Influencer",
-      img: photo,
+      img: a3,
       star: 5,
     },
     {
       id: 3,
       msg: "Willow Wave's social media services are exceptional, blending a deep brand understanding with consistently impressive results, elevating our online presence.",
       name: "William Evans",
-      subname: "Developer",
-      img: photo,
+      subname: "Digital Marketing",
+      img: a4,
       star: 5,
     },
     {
       id: 4,
       msg: "Highly satisfied with Willow Wave. Their excellence and innovative strategies have delivered exceptional results.",
       name: "Henry Davis",
-      subname: "Analyst",
-      img: photo,
+      subname: "Blogger",
+      img: a5,
       star: 4,
     },
   ]);
@@ -84,7 +89,7 @@ const Six = () => {
     <>
       <div>
         <div
-          className="grid grid-cols-1 select-none my-3 sm:my-[4%] w-full
+          className="grid grid-cols-1 select-none my-5 sm:my-[4%] w-full
 		"
         >
           <div
@@ -92,13 +97,13 @@ const Six = () => {
 		  "
           >
             <div className="sm:w-[90%] w-[95%] flex gap-8 justify-center items-center p-1 max-w-[1100px]">
-              <div className="grid sm:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2">
                 <div className=" flex justify-center ">
                   <div
                     className="
 				   flex md:w-[60%] sm:w-[80%] justify-center gap-6 flex-col"
                   >
-                    <div className="md:text-4xl text-3xl font-semibold md:leading-snug">
+                    <div className="md:text-4xl sm:text-3xl text-2xl pn:max-sm:px-2 font-semibold md:leading-snug">
                       What our client says about our services.
                     </div>
                     <div className="flex gap-2 my-2 justify-center pn:max-sm:hidden">
@@ -175,7 +180,7 @@ const Six = () => {
                                 <div className="flex gap-2 items-center">
                                   <div>
                                     <Image
-                                      src={photo}
+                                      src={slide.img}
                                       alt="photo"
                                       className="w-12 h-12 rounded-full"
                                     />
@@ -190,7 +195,7 @@ const Six = () => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="flex justify-between absolute -bottom-1 w-full left-0  items-center">
+                              <div className="flex justify-between h-10 w-full items-center">
                                 <div className="text-center">
                                   {data.map((_, dotIndex) => (
                                     <span

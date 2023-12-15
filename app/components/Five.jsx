@@ -41,13 +41,13 @@ const Five = () => {
                     >
                       <div>
                         <h1 className="md:text-3xl text-2xl font-bold">
-                          Streamline Your Way to Widespread Recognition!
+                          Just a Few Steps to Popularity!
                         </h1>
                       </div>
                       <div className="text-[#434D56] text-sm">
-                        Instantly captivate your audience with quality content.
-                        We eliminate the guesswork, making your social media
-                        accounts irresistible.
+                        People want to follow social media accounts with quality
+                        content. But they often don't have the time or patience
+                        to judge an profile or page.
                       </div>
                     </div>
                     <div className="flex flex-col gap-8 my-6 sm:my-10">
@@ -69,9 +69,9 @@ const Five = () => {
                         <div className="flex flex-col gap-1">
                           <div className="font-medium">Pick a package</div>
                           <div className="text-sm text-[#6A778B]">
-                            Elevate your Instagram presence with our likes,
-                            followers, or views solutions. We're here to assist
-                            with any questions regarding bulk orders.
+                            Choose the Instagram likes, followers, or views
+                            package that you're interested in. Feel free to get
+                            in touch if you have an inquiry about a bulk order.
                           </div>
                         </div>
                       </div>
@@ -93,9 +93,9 @@ const Five = () => {
                         <div className="flex flex-col gap-1">
                           <div className="font-medium">Fill the info</div>
                           <div className="text-sm  text-[#6A778B]">
-                            Your confidential data is safe with us. No need to
-                            share your password. All we need is your username,
-                            and we'll manage the rest professionally.
+                            We will never ask you for sensitive details such as
+                            your password. All you have to do is provide us with
+                            your username and leave the rest to us!
                           </div>
                         </div>
                       </div>
@@ -117,8 +117,9 @@ const Five = () => {
                         <div className="flex flex-col gap-1">
                           <div className="font-medium">See the growth</div>
                           <div className="text-sm text-[#6A778B]">
-                            We prioritize speed and simplicity, enabling swift
-                            account enhancement.
+                            All orders start within a few minutes, so you'll see
+                            growth in your account very quickly. We've made the
+                            process super easy.
                           </div>
                         </div>
                       </div>
