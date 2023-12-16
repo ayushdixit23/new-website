@@ -19,7 +19,6 @@ import { encryptaes, decryptaes } from "./safety";
 const Third = () => {
   const [id, setId] = useState("");
   const router = useRouter();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const id = decryptaes(Cookies.get("ryiligid"));
@@ -57,13 +56,9 @@ const Third = () => {
     }
   };
 
-  // console.log(data?.face[0]?.uniqueid[data.face[0]?.uniqueid.length - 1]);
-
   useEffect(() => {
     fetchData();
   }, []);
-
-  console.log(id);
 
   return (
     <>

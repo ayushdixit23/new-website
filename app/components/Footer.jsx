@@ -20,8 +20,9 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="text-[#838E9E]">
-                  "Journeying together, creating moments that matter. Connecting
-                  hearts, one click at a time."
+                  Providing options to increase followers, likes, views,
+                  comments, and other engagement metrics on social media posts
+                  or profiles.
                 </div>
               </div>
             </div>

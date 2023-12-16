@@ -1,12 +1,9 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import hero from "../assets/mainphoto.png";
 import Header from "./Header";
-import { useRouter } from "next/navigation";
 
 const First = () => {
-  const router = useRouter();
   return (
     <>
       <div>
@@ -25,7 +22,7 @@ const First = () => {
                   <div className="flex p-4 xxl:items-center flex-col md:gap-8 gap-6 justify-center pn:max-sm:px-3">
                     <div className="flex sm:max-w-[500px] flex-col p-2 sm:p-4 gap-2 sm:gap-4">
                       <div className="text-[#F461A6] pn:max-sm:text-center font-semibold text-lg">
-                        Social MEDIA GROWTH
+                        SOCIAL MEDIA GROWTH
                       </div>
                       <div
                         className="xxl:text-[40px] md:text-[35px] text-xl th:text-[25px] sm:max-new:text-2xl pn:max-sm:text-center
@@ -51,8 +48,8 @@ const First = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-center items-center sm:max-h-[500px] sm:max-w-[700px]">
-                  <Image src={hero} alt="image" className="" />
+                <div className="flex justify-center  pn:max-sm:relative pn:max-sm:left-7 items-center sm:max-h-[500px] sm:max-w-[700px]">
+                  <Image src={hero} alt="image" />
                 </div>
               </div>
             </div>

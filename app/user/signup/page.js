@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AiTwotoneLock } from "react-icons/ai";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const page = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -21,8 +23,15 @@ const page = () => {
 				const res = await axios.post(`${API}/users/signup`, user);
 
 				if (res.data.success) {
-					router.push("/user/login");
+					toast.success("Success! Your account has been created")
+					setTimeout(() => {
+						router.push("/user/login");
+					}, 3000)
+				} else {
+					toast.error("Something Went Wrong!")
 				}
+			} else {
+				toast.error("Wrong Password! Try Again")
 			}
 		} catch (e) {
 			console.log(e, "e");
@@ -32,6 +41,7 @@ const page = () => {
 	console.log(email, password, cpassword);
 	return (
 		<>
+			<ToastContainer />
 			<div className="min-h-[40vh] select-none sm:min-h-[50vh] md:min-h-[70vh] my-3 pn:max-sm:p-3 flex justify-center items-center">
 				<div className="flex items-center shadow-lg rounded-lg p-5 w-full md:w-[35%] sm:max-md:max-w-[600px]">
 					<div className="flex flex-col w-full">
@@ -46,6 +56,7 @@ const page = () => {
 									<div>
 										<input
 											value={email}
+											id="hj"
 											onChange={(e) => setEmail(e.target.value)}
 											type="email"
 											placeholder="Email"
@@ -59,6 +70,7 @@ const page = () => {
 									</div>
 									<div>
 										<input
+											id="ghj"
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 											type="password"
@@ -73,6 +85,7 @@ const page = () => {
 									</div>
 									<div>
 										<input
+											id="fgh"
 											value={cpassword}
 											onChange={(e) => setCpassword(e.target.value)}
 											type="password"

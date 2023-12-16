@@ -43,7 +43,7 @@ const Four = () => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <div className="font-semibold">80,000 followers </div>
+                    <div className="font-semibold">80,000</div>
                     <div className="sm:text-sm text-xs text-[#42526B]">
                       Social Followers
                     </div>

@@ -167,7 +167,7 @@ const Six = () => {
                                 : "opacity-0 translate-x-full"
                             }`}
                           >
-                            <div className="w-full h-full bg-white p-2 flex  flex-col">
+                            <div className="w-full h-full rounded-xl bg-white p-2 flex  flex-col">
                               <div className="flex flex-col gap-3 sm:gap-5">
                                 <div className="flex gap-1 mt-2 text-[#FF8800] text-xl items-center">
                                   {[...Array(slide.star)].map((_, i) => (
