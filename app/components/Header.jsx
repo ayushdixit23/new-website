@@ -160,13 +160,13 @@ const Header = () => {
               <div className="flex flex-col text-sm justify-center items-center gap-3 w-full">
                 <button
                   onClick={() => router.push("/user/login")}
-                  className="p-2 px-4 bg-[#27ae60] text-white w-full rounded-full"
+                  className="p-2 px-4 bg-transparent text-black w-full rounded-full"
                 >
-                  Log In
+                  Sign In
                 </button>
                 <button
                   onClick={() => router.push("/user/signup")}
-                  className="p-2 px-4 bg-[#5570F1] text-white w-full rounded-full"
+                  className="p-2 px-4 bg-[#2057C2] text-white w-full rounded-full"
                 >
                   Signup
                 </button>
