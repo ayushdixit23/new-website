@@ -36,11 +36,18 @@ const page = () => {
   const [endata, setEndata] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [pop, setPop] = useState(false);
-  const cookiedata = JSON.parse(decryptaes(Cookies.get("meordi")));
+  const [cookiedata, setCookieData] = useState(null)
+
+
+  useEffect(() => {
+    const c = Cookies.get("meordi")
+    const a = c ? decryptaes(c) : null
+    const coos = JSON.parse(a)
+    setCookieData(coos)
+  }, [Cookies.get("meordi")])
   const { name, offer, details, Likes, Reactions, Views, Comments } =
-    cookiedata;
+    cookiedata || {}; // Providing an empty object as default value
   // const params = useSearchParams();
-  const [combined, setCombined] = useState();
 
   useEffect(() => {
     const id = decryptaes(Cookies.get("ryiligid"));
@@ -402,21 +409,20 @@ const page = () => {
                         placeholder={
                           name
                             ? (name === "Instagram" &&
-                                "https://www.instagram.com/username") ||
-                              (name === "Facebook" &&
-                                "https://www.facebook.com/username") ||
-                              (name === "Youtube" &&
-                                "https://www.youtube.com/username") ||
-                              (name === "Telegram" &&
-                                "https://www.telegram.com/username")
+                              "https://www.instagram.com/username") ||
+                            (name === "Facebook" &&
+                              "https://www.facebook.com/username") ||
+                            (name === "Youtube" &&
+                              "https://www.youtube.com/username") ||
+                            (name === "Telegram" &&
+                              "https://www.telegram.com/username")
                             : "Enter Your Social Media Details"
                         }
                       />
                     </div>
                     <div
-                      className={`flex border-2 rounded-lg relative group justify-between items-center p-2 px-3 ${
-                        isOpen ? "border-blue-500" : ""
-                      }`}
+                      className={`flex border-2 rounded-lg relative group justify-between items-center p-2 px-3 ${isOpen ? "border-blue-500" : ""
+                        }`}
                       onClick={handleDropdownClick}
                     >
                       <div>{states.type || "Choose a package"}</div>
@@ -444,9 +450,8 @@ const page = () => {
                           <input
                             type="number"
                             name="number"
-                            placeholder={`Enter Your ${
-                              states.type ? states.type : ""
-                            } Count`}
+                            placeholder={`Enter Your ${states.type ? states.type : ""
+                              } Count`}
                             onChange={(e) => {
                               const newValue = e.target.value;
 
@@ -483,8 +488,8 @@ const page = () => {
                             ? states.type
                             : "Followers"
                           : states.type
-                          ? states.type
-                          : "Subscribers"}
+                            ? states.type
+                            : "Subscribers"}
                       </div>
                     </div>
                   </div>

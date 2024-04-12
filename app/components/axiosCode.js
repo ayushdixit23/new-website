@@ -17,31 +17,28 @@ const parseJwt = (token) => {
 	return JSON.parse(atob(base64));
 };
 
-const refreshAccessToken = async () => {
-	try {
-		const res = await axios.post(`${API}/refresh`, {
-			refresh_token: tokens.refresh_token,
-		});
-		console.log("runnded");
-		console.log(res.data);
-		const { access_token, success } = res.data;
-
-		if (success) {
-			return { access_token, refresh_token: tokens.refresh_token };
-		} else {
-			console.log("Failed to refresh token");
-			return Promise.reject("Failed to refresh token");
-		}
-	} catch (err) {
-		console.log(err);
-		return Promise.reject("Failed to refresh token");
-	}
-};
-
 const axiosInstance = axios.create({
 	baseURL: `${API}`,
 	timeout: 5000,
 });
+
+const refreshAccessToken = async (refreshToken) => {
+	try {
+		const res = await refreshedtokenAgain({
+			refresh_token: refreshToken,
+		});
+		const { access_token, success } = res.data;
+		if (success) {
+			return { access_token, refresh_token: refreshToken };
+		} else {
+			console.error("Failed to refresh token");
+			return Promise.reject("Failed to refresh token");
+		}
+	} catch (err) {
+		console.error(err);
+		return Promise.reject("Failed to refresh token");
+	}
+};
 
 axiosInstance.interceptors.request.use(
 	async (config) => {
