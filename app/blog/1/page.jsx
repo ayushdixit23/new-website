@@ -3,7 +3,9 @@ import React from 'react'
 const page = () => {
 	return (
 		<div className="container mx-auto px-4 py-8">
-			<h1 className="text-4xl font-bold mb-8">How to Become a MERN Stack Web Developer in 2024</h1>
+			<h1 className="text-4xl font-bold mb-8">How to Become a MERN Stack Web Developer in 2024 <div>
+				<a className='text-sm underline' href="https://www.highrevenuenetwork.com/z11sa1inn?key=0fed1403812140ee242cf717c0f6924a">Click Here</a>
+			</div></h1>
 
 			<section className="mb-8">
 				<h2 className="text-2xl font-bold mb-4">Introduction</h2>
@@ -11,6 +13,8 @@ const page = () => {
 					The MERN stack, comprising MongoDB, Express.js, React, and Node.js, is a powerful and popular combination of technologies for building modern web applications. As we move into 2024, the demand for skilled MERN stack developers continues to grow. This guide will walk you through the steps to become a proficient MERN stack developer, covering the essential skills, tools, and best practices you'll need.
 				</p>
 			</section>
+
+
 
 			<section className="mb-8">
 				<h2 className="text-2xl font-bold mb-4">What is the MERN Stack?</h2>
